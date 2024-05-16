@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "main": {
+      "type": "template--blog",
+      "settings": {
+        "blog_layout": "list",
+        "blog-posts-per-page": 3,
+        "show_author_name": false,
+        "show_dates": false
+      }
+    },
+    "newsletter": {
+      "type": "newsletter--newsletter",
+      "settings": {
+        "subheading": "Subheading",
+        "title": "Join our mailing list",
+        "newsletter_description": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "newsletter"
+  ]
+}

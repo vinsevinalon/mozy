@@ -1,0 +1,142 @@
+{
+  "sections": {
+    "ff97f72b-48bf-43db-8d57-adebc51e2855": {
+      "type": "advanced-layout--custom-html",
+      "settings": {
+      }
+    },
+    "288c24b5-482c-48ce-a835-750be03f268e": {
+      "type": "video--video",
+      "settings": {
+        "subheading": "Reviewed by Barbara Majeski",
+        "title": "As Seen on Good Day New York",
+        "url": "https:\/\/www.youtube.com\/watch?v=a0jBLtcVT60",
+        "autoplay": false,
+        "loop": true,
+        "mute": false,
+        "width_classes": "video-width--50"
+      }
+    },
+    "1ea88d33-e1dc-4bc8-840f-d795d72ffc73": {
+      "type": "advanced-layout--custom-html",
+      "settings": {
+      }
+    },
+    "b9a04d9e-5fb2-434e-974b-5bd2ec3c3f9e": {
+      "type": "image--image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Checkout_More_Press_Click_the_links_to_see_reviews_of_the_Mozy_1779ce97-72ce-4e1f-99a6-23bcb93d3e57.png",
+        "parallax": false,
+        "alignment": "center",
+        "hero_size": "small",
+        "text-over-image-width": "full-width"
+      }
+    },
+    "8503c422-12c0-4f26-aaae-ddd0ae4bff66": {
+      "type": "image--gallery",
+      "blocks": {
+        "template--15930488291522__8503c422-12c0-4f26-aaae-ddd0ae4bff66-167690761373ab6b58-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/mlogo1.png",
+            "link": "https:\/\/www.laweekly.com\/get-a-head-start-on-the-holiday-season-with-these-unique-and-luxury-gifts\/",
+            "title": "",
+            "description": ""
+          }
+        },
+        "template--15930488291522__8503c422-12c0-4f26-aaae-ddd0ae4bff66-167690761373ab6b58-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/mlogo3.png",
+            "link": "https:\/\/www.hiking-for-her.com\/Mozy-review.html",
+            "title": "",
+            "description": ""
+          }
+        },
+        "1f50e44d-9074-4126-8296-bcb28fc0abb4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/mlogo4.png",
+            "link": "https:\/\/www.sandiegofamily.com\/for-the-kids\/kid-tested-toy-product-review\/unique-gifts-ideas?highlight=WyJnaWZ0cyIsIm1vbSIsIm1vbSdzIl0=",
+            "title": "",
+            "description": ""
+          }
+        },
+        "a521f229-425a-41e5-8c06-01e661914eec": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/mlogo5.png",
+            "link": "https:\/\/dailymom.com\/discover\/25-of-the-best-amazon-gifts-for-men-to-light-up-his-holidays\/",
+            "title": "",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15930488291522__8503c422-12c0-4f26-aaae-ddd0ae4bff66-167690761373ab6b58-1",
+        "template--15930488291522__8503c422-12c0-4f26-aaae-ddd0ae4bff66-167690761373ab6b58-2",
+        "1f50e44d-9074-4126-8296-bcb28fc0abb4",
+        "a521f229-425a-41e5-8c06-01e661914eec"
+      ],
+      "settings": {
+      }
+    },
+    "eefce683-3660-41ab-b32c-74ea50189b63": {
+      "type": "image--gallery",
+      "blocks": {
+        "template--15930488291522__eefce683-3660-41ab-b32c-74ea50189b63-167690761373ab6b58-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/mlogo2.png",
+            "link": "https:\/\/www.women.com\/julietteeyl\/lists\/products-and-gifts-for-parents-to-make-life-easier-090921",
+            "title": "",
+            "description": ""
+          }
+        },
+        "template--15930488291522__eefce683-3660-41ab-b32c-74ea50189b63-167690761373ab6b58-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/mlogo6.png",
+            "link": "https:\/\/www.everythingbranding.com\/post\/cbs-new-york-city-products-you-need-to-know-about",
+            "title": "",
+            "description": ""
+          }
+        },
+        "template--15930488291522__eefce683-3660-41ab-b32c-74ea50189b63-167690761373ab6b58-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/mlogo7.png",
+            "link": "https:\/\/www.inverse.com\/input\/reviews\/mozy-review-best-outdoor-stadium-blanket",
+            "title": "",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15930488291522__eefce683-3660-41ab-b32c-74ea50189b63-167690761373ab6b58-0",
+        "template--15930488291522__eefce683-3660-41ab-b32c-74ea50189b63-167690761373ab6b58-1",
+        "template--15930488291522__eefce683-3660-41ab-b32c-74ea50189b63-167690761373ab6b58-2"
+      ],
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "template--page-contact",
+      "disabled": true,
+      "custom_css": [
+
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "ff97f72b-48bf-43db-8d57-adebc51e2855",
+    "288c24b5-482c-48ce-a835-750be03f268e",
+    "1ea88d33-e1dc-4bc8-840f-d795d72ffc73",
+    "b9a04d9e-5fb2-434e-974b-5bd2ec3c3f9e",
+    "8503c422-12c0-4f26-aaae-ddd0ae4bff66",
+    "eefce683-3660-41ab-b32c-74ea50189b63",
+    "main"
+  ]
+}

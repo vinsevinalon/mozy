@@ -1,0 +1,67 @@
+{
+  "sections": {
+    "ss_countdown_bar_Npznfi": {
+      "type": "ss-countdown-bar",
+      "blocks": {
+        "text_rh3Gfd": {
+          "type": "text",
+          "settings": {
+            "heading": "",
+            "color": "#ffffff",
+            "font_size": 12
+          }
+        },
+        "timer_mgAakC": {
+          "type": "timer",
+          "settings": {
+            "year": "2024",
+            "month": "05",
+            "day": "19",
+            "hour": "23",
+            "minute": "59",
+            "hide_timer_on_completed": true,
+            "color": "#ffffff",
+            "font_size_number": 20,
+            "font_size_text": 10
+          }
+        }
+      },
+      "block_order": [
+        "text_rh3Gfd",
+        "timer_mgAakC"
+      ],
+      "disabled": true,
+      "settings": {
+        "target_selector": ".header-wrapper",
+        "background-color": "#54c7de"
+      }
+    },
+    "shogun-home": {
+      "type": "shogun-home",
+      "settings": {
+      }
+    },
+    "9aa6e285-df7a-45cf-995d-e96ab79b684d": {
+      "type": "advanced-layout--custom-html",
+      "blocks": {
+        "0b258275-eb1e-4360-a810-1b865d433b60": {
+          "type": "html",
+          "settings": {
+            "code": "<iframe src=\"https:\/\/api.leadconnectorhq.com\/widget\/form\/KqkzzGuQEcDPEg7wxdIr\" style=\"width:100%;height:100%;border:none;border-radius:3px\" id=\"inline-KqkzzGuQEcDPEg7wxdIr\" data-layout=\"{'id':'INLINE'}\" data-trigger-type=\"alwaysShow\" data-trigger-value=\"\" data-activation-type=\"alwaysActivated\" data-activation-value=\"\" data-deactivation-type=\"neverDeactivate\" data-deactivation-value=\"\" data-form-name=\"Website SignUp\" data-height=\"432\" data-layout-iframe-id=\"inline-KqkzzGuQEcDPEg7wxdIr\" data-form-id=\"KqkzzGuQEcDPEg7wxdIr\" title=\"Website SignUp\">\n<\/iframe>\n<script src=\"https:\/\/link.msgsndr.com\/js\/form_embed.js\"><\/script>",
+            "width": "100%"
+          }
+        }
+      },
+      "block_order": [
+        "0b258275-eb1e-4360-a810-1b865d433b60"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "ss_countdown_bar_Npznfi",
+    "shogun-home",
+    "9aa6e285-df7a-45cf-995d-e96ab79b684d"
+  ]
+}
