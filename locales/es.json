@@ -57,6 +57,7 @@
       "title": "Buscar nuestro sitio",
       "products": "Productos",
       "articles": "Artículos",
+      "suggestions": "Sugerencias",
       "pages": "Páginas",
       "collections": "Colecciones",
       "results": "Resultados",
@@ -390,6 +391,16 @@
       "redeem": "Utilice este código en la caja para redimir su tarjeta de regalo",
       "shop_link": "Iniciar compras",
       "print": "Imprimir"
+    },
+    "recipient": {
+      "form": {
+        "checkbox": "Quiero enviar esto como un regalo",
+        "recipient_email": "Correo electrónico del destinatario",
+        "recipient_name": "Nombre del destinatario (opcional)",
+        "max_characters": "{{ max_chars }} máximo de caracteres",
+        "message_placeholder": "Mensaje (opcional)",
+        "email_label_optional_for_no_js_behavior": "Correo electrónico del destinatario (opcional)"
+      }
     }
   },
   "coming_soon": {

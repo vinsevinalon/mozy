@@ -13,22 +13,6 @@
   </svg>
 {% endcapture %}
 
-{% if settings.enable-article-results %}
-    {% assign article_search = "article," %}
-  {% else %}
-    {% assign article_search = "" %}
-  {% endif %}
-  {% if settings.enable-product-results %}
-    {% assign product_search = "product," %}
-  {% else %}
-    {% assign product_search = "" %}
-  {% endif %}
-  {% if settings.enable-page-results %}
-    {% assign page_search = "page," %}
-  {% else %}
-    {% assign page_search = "" %}
-  {% endif %}
-
 <div>
     <div class="collection-filters" id="main-collection-filters" data-id="{{ section.id }}">
       {%- unless search.filters == empty or request.design_mode -%}
@@ -195,7 +179,7 @@
                 </div>
     
                 <div class="active-facets active-facets-desktop">
-                <a href="{{ routes.search_url }}?q={{search.terms}}&sort_by={{ sort_by }}&type={{ article_search }}{{ product_search }}{{ page_search }}" id="clear-all--desktop" class="active-facets__button button button--secondary js-facet-remove">{{ 'sections.collection_template.clear_all' | t }}</a>
+                <a href="{{ routes.search_url }}?q={{search.terms}}&sort_by={{ sort_by }}" id="clear-all--desktop" class="active-facets__button button button--secondary js-facet-remove">{{ 'sections.collection_template.clear_all' | t }}</a>
                 {%- for filter in search.filters -%}
                     {%- for value in filter.active_values -%}
                     <a class="active-facets__button active-facets__button--light button button--tertiary js-facet-remove" href="{{ value.url_to_remove }}">
@@ -218,7 +202,7 @@
                 </div>
             {% endif %}
 
-            <input type="hidden" name="type" id="page-type-input" value="{{ article_search }}{{ product_search }}{{ page_search }}">
+            <input type="hidden" name="type" id="page-type-input" value="article,product,page">
     
             {%- if section.settings.enable_sorting == true and search.performed -%}
                 <div class="collection-filters__item sorting">
@@ -312,7 +296,7 @@
 
     <div class="container">
         <div class="active-facets active-facets-mobile">
-            <a href="{{ routes.search_url }}?q={{search.terms}}&sort_by={{ sort_by }}&type={{ article_search }}{{ product_search }}{{ page_search }}" id="clear-all--mobile" class="active-facets__button button button--secondary js-facet-remove">{{ 'sections.collection_template.clear_all' | t }}</a>
+            <a href="{{ routes.search_url }}?q={{search.terms}}&sort_by={{ sort_by }}" id="clear-all--mobile" class="active-facets__button button button--secondary js-facet-remove">{{ 'sections.collection_template.clear_all' | t }}</a>
             {%- for filter in search.filters -%}
             {%- for value in filter.active_values -%}
                 <a class="active-facets__button active-facets__button--light button button--tertiary js-facet-remove" href="{{ value.url_to_remove }}">

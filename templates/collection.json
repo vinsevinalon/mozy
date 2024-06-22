@@ -1,16 +1,6 @@
 {
   "wrapper": "div.collection-wrapper",
   "sections": {
-    "shogun-helper": {
-      "type": "shogun-helper",
-      "settings": {
-      }
-    },
-    "shogun-above": {
-      "type": "shogun-above",
-      "settings": {
-      }
-    },
     "collection_header": {
       "type": "template--collection-header",
       "blocks": {
@@ -66,11 +56,6 @@
         "pagination_type": "load_more"
       }
     },
-    "shogun-below": {
-      "type": "shogun-below",
-      "settings": {
-      }
-    },
     "0a4c16cf-3808-4ef2-a40c-cd85621f4a26": {
       "type": "advanced-layout--custom-html",
       "settings": {
@@ -78,12 +63,9 @@
     }
   },
   "order": [
-    "shogun-helper",
-    "shogun-above",
     "collection_header",
     "product_filtering",
     "main",
-    "shogun-below",
     "0a4c16cf-3808-4ef2-a40c-cd85621f4a26"
   ]
 }

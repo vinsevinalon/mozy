@@ -1,46 +1,5 @@
 {
   "sections": {
-    "ss_countdown_bar_Npznfi": {
-      "type": "ss-countdown-bar",
-      "blocks": {
-        "text_rh3Gfd": {
-          "type": "text",
-          "settings": {
-            "heading": "",
-            "color": "#ffffff",
-            "font_size": 12
-          }
-        },
-        "timer_mgAakC": {
-          "type": "timer",
-          "settings": {
-            "year": "2024",
-            "month": "05",
-            "day": "19",
-            "hour": "23",
-            "minute": "59",
-            "hide_timer_on_completed": true,
-            "color": "#ffffff",
-            "font_size_number": 20,
-            "font_size_text": 10
-          }
-        }
-      },
-      "block_order": [
-        "text_rh3Gfd",
-        "timer_mgAakC"
-      ],
-      "disabled": true,
-      "settings": {
-        "target_selector": ".header-wrapper",
-        "background-color": "#54c7de"
-      }
-    },
-    "shogun-home": {
-      "type": "shogun-home",
-      "settings": {
-      }
-    },
     "9aa6e285-df7a-45cf-995d-e96ab79b684d": {
       "type": "advanced-layout--custom-html",
       "blocks": {
@@ -55,13 +14,18 @@
       "block_order": [
         "0b258275-eb1e-4360-a810-1b865d433b60"
       ],
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "pagefly-home": {
+      "type": "pagefly-home",
       "settings": {
       }
     }
   },
   "order": [
-    "ss_countdown_bar_Npznfi",
-    "shogun-home",
-    "9aa6e285-df7a-45cf-995d-e96ab79b684d"
+    "9aa6e285-df7a-45cf-995d-e96ab79b684d",
+    "pagefly-home"
   ]
 }

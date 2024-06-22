@@ -52,6 +52,14 @@
 <div style="position: relative" class="lazyload-blur-wrapper{% if blur == 'center' %} lazyload-blur-wrapper-center{% endif %}{% if class != blank %} {{ class }}--ll-wrapper{% endif %}">
 {% endif %}
 
+{% assign focal_point = responsive-image.presentation.focal_point %}
+
+{% if styles or focal_point %}
+  {% capture style_attr %}
+    style="{% if styles %}{{ styles }} {% endif %}{% if focal_point %}object-fit:cover;object-position:{{ focal_point }}!important;{% endif %}"
+  {% endcapture %}
+{% endif %}
+
 <noscript aria-hidden="true">
     <img
         class="{{ class }}"
@@ -64,6 +72,7 @@
             alt=""
         {% endif %}
         {{ props }}
+        {{ style_attr }}
     />
 </noscript>
 
@@ -84,6 +93,7 @@
         alt=""
     {% endif %}
     {{ props }}
+    {{ style_attr }}
     width="{{ responsive-image.width }}"
     height="{{ responsive-image.height }}"
 />

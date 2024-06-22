@@ -293,6 +293,21 @@
                   </div>
 
                 {% when 'payment-buttons' %}
+                    {%- liquid
+                      assign gift_card_recipient_feature_active = false
+                      if block.settings.show_gift_card_recipient and product.gift_card?
+                        assign gift_card_recipient_feature_active = true
+                      endif
+                
+                      assign show_dynamic_checkout = false
+                      if block.settings.show_smart_checkout and gift_card_recipient_feature_active == false
+                        assign show_dynamic_checkout = true
+                      endif
+                    -%}
+
+                    {% if gift_card_recipient_feature_active %}
+                      {% render 'gift-card-recipient-form' with product: product, form: form, section: section %}
+                    {% endif %}
 
                     <div class="col-md-12 product-page--submit-action" data-stock-email-enabled="{{ section.settings.show_out_of_stock_email }}" {{ block.shopify_attributes }}>
                       {% assign disabled = false %}
@@ -314,7 +329,7 @@
                         {% endif %}
                       </button>
 
-                      {% if block.settings.show_smart_checkout and product.available %}
+                      {% if show_dynamic_checkout %}
                         {{ form | payment_button }}
                       {% endif %}
 
@@ -386,9 +401,6 @@
           </div>
 
         {% endform %}
-
-        {%- render 'shappify-bdl-load-bundle' -%}
-
 
         {% if section.settings.show_out_of_stock_email and section.settings.out_of_stock_email_position == 'below-details' %}
           <div class="variant-out-of-stock"{% unless sold_out %} style="display:none;"{% endunless %}>
@@ -734,6 +746,25 @@
                   "fr": "Permet aux clients de payer directement en utilisant un mode de paiement familier. [En savoir plus](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
                   "pt-PT": "Permita que os clientes façam checkout diretamente utilizando um método de pagamento familiar. [Saber mais](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
               }
+          },
+          {
+            "type": "checkbox",
+            "id": "show_gift_card_recipient",
+            "default": false,
+            "label": {
+                "en": "Show recipient information form for gift card products",
+                "de": "Empfängerinformationen für Geschenkkartenprodukte anzeigen",
+                "es": "Mostrar formulario de información del destinatario para productos de tarjetas de regalo",
+                "fr": "Afficher le formulaire d'informations sur le destinataire pour les produits de cartes-cadeaux",
+                "pt-PT": "Mostrar formulário de informações do destinatário para produtos de cartões de oferta"
+            },
+            "info": {
+                "en": "Gift card products can optionally be sent direct to a recipient along with a personal message. [Learn more](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-gift-card-recipient-fields)",
+                "de": "Geschenkkartenprodukte können optional zusammen mit einer persönlichen Nachricht direkt an einen Empfänger gesendet werden. [Mehr erfahren](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-gift-card-recipient-fields)",
+                "es": "Los productos de tarjetas de regalo se pueden enviar opcionalmente directamente a un destinatario junto con un mensaje personal. [Saber más](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-gift-card-recipient-fields)",
+                "fr": "Les produits de cartes-cadeaux peuvent être envoyés directement à un destinataire avec un message personnel. [En savoir plus](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-gift-card-recipient-fields)",
+                "pt-PT": "Os produtos de cartões de oferta podem ser enviados diretamente para um destinatário, juntamente com uma mensagem pessoal. [Saber Mais](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-gift-card-recipient-fields)"
+            }
           }
         ]
       },
@@ -1338,9 +1369,6 @@
             }
           ]
         }
-    ],
-    "presets": [
-
     ]
 }
 {% endschema %}

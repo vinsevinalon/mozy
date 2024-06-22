@@ -1,27 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="{{ request.locale.iso_code }}">
-<title>
-{% if handle contains https://getthemozy.com/policies/terms-of-service %}
-<meta name="robots" content="noindex">
-{% endif %}
-{% if handle contains https://getthemozy.com/pages/return-policy%}
-<meta name="robots" content="noindex">
-{% endif %}
-{% if handle contains https://getthemozy.com/pages/home%}
-<meta name="robots" content="noindex">
-{% endif %}
-{{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
-
-</title>
-
-{% if page_description %}
-
-<meta name="description" content="{{ page_description | escape }}" />
-
-{% endif %}
-
-<link rel="canonical" href="{{ https://getthemozy.com/ }}" />
-  <head>{% render 'pagefly-head' %}
+<head>
 
 	<meta charset="utf-8">
 	{%- comment -%}DemoStoreRequirements{%- endcomment -%}
@@ -85,9 +64,6 @@
 	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
 	{{ content_for_header }}
- {%- render 'bold-pr' -%}
-{%- render 'bold-common' -%}
-{%- render 'bold-includes' -%}
 
 	<script type="text/javascript">
 	window.lazySizesConfig = window.lazySizesConfig || {};
@@ -109,9 +85,7 @@
 	{% if template.name == 'article' %}
 		<script src="{{ 'textSlideshow.js' | asset_url }}" defer="defer"></script>
 	{% endif %}
-
-  {% render 'shogun-head' %}
-{% render 'edt_p' %} </head>
+{% include 'pagefly-app-header' %}</head>
 
 {% assign cart_visible = true %}
 {% if settings.cart-type == 'persistent' and settings.persistent-cart-visibility == 'product_collection' %}
@@ -143,8 +117,7 @@
 
 			<div id="slideout-overlay"></div>
 
-			{% section 'announcement-bar' %}
-			{% section 'header' %}
+			{% sections 'header-group' %}
 
 			<main id="main">
 
@@ -160,7 +133,7 @@
 
 			</main>
 
-			{% section 'footer' %}
+			{% sections 'footer-group' %}
 		</div>
 
 	</div>
@@ -189,6 +162,7 @@
 				"pages": {{ 'general.search.pages' | t | json }},
 				"collections": {{ 'general.search.collections' | t | json }},
 				"articles": {{ 'general.search.articles' | t | json }},
+				"suggestions": {{ 'general.search.suggestions' | t | json }},
 				"loading": {{ 'collections.paginate.loading' | t | json }},
 				"applyFilterLabel": {{ 'collections.filters.apply_label' | t | json }},
 				"removeFilterLabel": {{ 'collections.filters.remove_label' | t | json }},
@@ -215,41 +189,6 @@
 	<script defer type="module" src="{{ 'theme.js' | asset_url }}"></script>
 	<script defer nomodule src="{{ 'theme.legacy.js' | asset_url }}"></script>
 	{% if request.design_mode %}<script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>{% endif %}
-
-  
-<!--  -->
-
-  <!-- PickyStory snippet "main_widget_script", do not modify. Safe to remove after the app is uninstalled -->
-  {% if content_for_header contains 'pickystory' %}
-    <script defer src="https://cdn.pickystory.com/widget/dist/latest/pickystory-widget.min.js"></script>
-  {% endif %}
-  <!-- PickyStory end snippet "main_widget_script" -->
-
-<!-- Zappy Upsell App -->
-<div class="zappy-holder" data-token="1669235642" data-shop="get-the-mozy.myshopify.com"></div><script class="zappy-js" async defer src="https://zegsu.com/dist/js/upsell-funnel/widget.js?version=1.0.0&shop=get-the-mozy.myshopify.com&token=1669235642"></script>
-<script>
-(function(s,m,a,r,t){
-if(s.hasOwnProperty("$smcInstall"))return!1;s.$smcInstall=1;
-s[r]=s[r]||[];var f=m.getElementsByTagName(a)[0],j=m.createElement(a),dl=r!='dataLayer'?'&r='+r:'';
-j.async=true;j.src='//smct.co/tm/?t='+t+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','getthemozy.com');
-</script>
-  
-  <style>
-    .stamped-drawer-title {
-    display: none !important;
-}
-  </style>
-<script type="text/javascript"> 
-  var mouseflowCrossDomainSupport = true;
-  window._mfq = window._mfq || [];
-  (function() {
-    var mf = document.createElement("script");
-    mf.type = "text/javascript"; mf.defer = true;
-    mf.src = "//cdn.mouseflow.com/projects/c105df81-4695-450f-b854-1f14ebf6c4c0.js";
-    document.getElementsByTagName("head")[0].appendChild(mf);
-  })();
-</script>
 </body>
 
 </html>

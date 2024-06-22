@@ -70,7 +70,6 @@
 
           <h3 id="cart_drawer_subtotal">
             <span class="cart-total-price js-cart-total" id="cart-price">
-              <span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_total" style="display:none !important;"></span>
               <span class="money">{{ cart.total_price | money }}</span>
             </span>
           </h3>
@@ -158,12 +157,12 @@
         			<div class="cart-item-price-wrapper">
         				<span class="sr-only">{{ 'products.general.now_price' | t }}</span>
         				<span class="cart-item-price"></span>
-        				<div class="money" data-line-index="{{ forloop.index0 }}" data-line-total>
-{{ bold_item_line_price | money }}
-                        </div>
+        				<span class="sr-only">{{ 'products.general.was_price' | t }}</span>
         				<span class="cart-item-price-original"></span>
         				<span class="cart-item-price-per-unit"></span>
         			</div>
+
+              <ul class="cart-item-drawer-properties"></ul>
 
         			<ul class="order-discount--cart-list" aria-label="{{ 'customer.order.discount' | t }}"></ul>
 

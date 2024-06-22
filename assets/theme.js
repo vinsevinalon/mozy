@@ -13596,7 +13596,7 @@ class CartDrawer extends Component {
 
       const cartEmptyNotice = _this.element.querySelectorAll('.cart-empty-box');
 
-      if (cart.items.length === 0) {
+      if (cart.items && cart.items.length === 0) {
         _this.showElements(cartEmptyNotice);
 
         _this.hideElements(elementsToUpdate);
@@ -13627,6 +13627,7 @@ class CartDrawer extends Component {
         var cartItem = template;
         var sellingPlanName = item.selling_plan_allocation ? item.selling_plan_allocation.selling_plan.name : null;
         const templateEls = {
+          cart_item_container: cartItem.querySelector('.cart-item'),
           image: cartItem.querySelector('.cart-item-image'),
           title: cartItem.querySelector('.cart-item-product-title'),
           links: cartItem.querySelectorAll('.cart-item-link'),
@@ -13638,11 +13639,14 @@ class CartDrawer extends Component {
           quantity_wrapper: cartItem.querySelector('.cart-item-quantity').closest('.cart-item--quantity-wrapper'),
           discounts: cartItem.querySelector('.order-discount--cart-list'),
           original_price: cartItem.querySelector('.cart-item-price-original'),
-          error_message: cartItem.querySelector('.errors')
+          error_message: cartItem.querySelector('.errors'),
+          item_properties: cartItem.querySelector('.cart-item-drawer-properties')
         };
         var stockCount = parseInt(cartData.items[index].stock_count);
         var stockPolicy = cartData.items[index].stock_policy;
         var stockManagement = cartData.items[index].inventory_management;
+        let cartItemId = item.id;
+        templateEls.cart_item_container ? templateEls.cart_item_container.classList.add(`id-${cartItemId}`) : null;
         templateEls.quantity_wrapper.setAttribute('data-stock-count', stockCount.toString());
         templateEls.quantity_wrapper.setAttribute('data-inventory-policy', stockPolicy);
         templateEls.quantity_wrapper.setAttribute('data-inventory-management', stockManagement);
@@ -13651,10 +13655,19 @@ class CartDrawer extends Component {
           _this.cartSetQuantity(quantity, cartItem, templateEls.quantity_wrapper);
         };
 
+        let itemProperties = [];
+
+        for (const property in item.properties) {
+          if (item.properties[property] && property.indexOf('_') !== 0) {
+            itemProperties.push(`<li><span class="cart-item-properties__title">${property}:</span> <span>${item.properties[property]}</span></li>`);
+          }
+        }
+
         templateEls.title.title = item.product_title;
         templateEls.title.innerText = item.product_title;
         templateEls.links.forEach(element => element.setAttribute('href', item.url));
         templateEls.price.innerHTML = _this.theme.formatMoney(item.final_line_price);
+        templateEls.item_properties.innerHTML = itemProperties.length ? itemProperties.join('') : '';
         templateEls.quantity.value = item.quantity.toString();
         templateEls.quantity.setAttribute('name', 'updates[]');
         templateEls.error_message.textContent = 'You can\'t add more of this item to the cart';
@@ -13663,6 +13676,12 @@ class CartDrawer extends Component {
           let getQuantity = parseInt(this.parentElement.dataset.stockCount, 10);
           let inventoryPolicy = this.parentElement.dataset.inventoryPolicy;
           let inventoryManagement = this.parentElement.dataset.inventoryManagement;
+          let item_has_duplicate = document.querySelectorAll(`.cart-item.id-${cartItemId}`).length > 1;
+
+          if (item_has_duplicate) {
+            let qtyVal = parseInt(this.value, 10);
+            getQuantity = self.handleDuplicateCartItems(cartItemId, getQuantity, qtyVal);
+          }
 
           if (new_q <= getQuantity || inventoryPolicy == "continue" || inventoryManagement != "shopify") {
             templateEls.quantity.value = new_q.toString();
@@ -13709,6 +13728,7 @@ class CartDrawer extends Component {
 
         cartItem.querySelectorAll('.cart-item-quantity-button').forEach(item => {
           item.addEventListener('click', function () {
+            this.setAttribute('disabled', '');
             let current = parseInt(templateEls.quantity.value.toString(), 10);
             let change = parseInt(this.dataset.amount, 10);
             let new_q = current + change;
@@ -13716,6 +13736,12 @@ class CartDrawer extends Component {
             let getQuantity = parseInt(this.parentElement.dataset.stockCount, 10);
             let inventoryPolicy = this.parentElement.dataset.inventoryPolicy;
             let inventoryManagement = this.parentElement.dataset.inventoryManagement;
+            let item_has_duplicate = document.querySelectorAll(`.cart-item.id-${cartItemId}`).length > 1;
+
+            if (item_has_duplicate) {
+              let qtyVal = parseInt(this.parentElement.querySelector('#cart-item--quantity-input').value, 10);
+              getQuantity = self.handleDuplicateCartItems(cartItemId, getQuantity, qtyVal);
+            }
 
             if (new_q <= getQuantity || inventoryPolicy == "continue" || inventoryManagement != "shopify") {
               templateEls.quantity.value = new_q.toString();
@@ -13800,6 +13826,15 @@ class CartDrawer extends Component {
       if (freeShippingContainer) {
         _this.theme.fetchSection('/', 'free-shipping-msg', freeShippingContainer);
       }
+    };
+
+    this.handleDuplicateCartItems = (itemId, stockAmt, val) => {
+      let duplicateQuantity = 0;
+      document.querySelectorAll(`.id-${itemId}`).forEach(item => {
+        duplicateQuantity += parseInt(item.querySelector('.cart-item-quantity').value, 10);
+      });
+      stockAmt = stockAmt - duplicateQuantity + val;
+      return stockAmt;
     };
 
     this.updateErrorMessage = message_string => {
@@ -24656,11 +24691,11 @@ class PredictiveSearch {
     };
 
     this.getSearchQuery = () => {
-      return `/search/suggest.json?q=${this.searchInput.value}&resources[type]=${this.searchTypes}`;
+      return `/search/suggest.json?q=${this.searchInput.value}&resources[limit]=3&resources[limit_scope]=each`;
     };
 
     this.getSearchPageUrlWithQuery = () => {
-      return `/search?type=${this.searchTypes}&q=${encodeURIComponent(this.searchInput.value)}*`;
+      return `/search?q=${encodeURIComponent(this.searchInput.value)}*`;
     };
 
     this.lockScrolling = () => {
@@ -24738,13 +24773,8 @@ class PredictiveSearch {
           }
 
           return temp;
-        }); // If there is more than 1 search type/group, restrict results to sensible amount.
-
-        let groupMax = 1;
-        if (_this.searchTypesNum == 1) groupMax = 4;else if (_this.searchTypesNum == 2) groupMax = 3;else if (_this.searchTypesNum == 3) groupMax = 2; // Give products a little more precedence.
-
-        if (resultType == 'product' && groupMax < 4) groupMax = groupMax++;
-        group.results = resultWithPrice.slice(0, groupMax);
+        });
+        group.results = resultWithPrice;
 
         if (group.results && group.results.length > 0) {
           _this.searchResultsNum += result.length;
@@ -24796,6 +24826,11 @@ class PredictiveSearch {
 
       Object.keys(results).forEach(function (groupKey) {
         const group = results[groupKey];
+
+        if (group.name == undefined) {
+          group.name = self.theme.translations.suggestions;
+        }
+
         const groupResults = group.results;
 
         if (groupResults.length > 0) {
@@ -24820,7 +24855,7 @@ class PredictiveSearch {
               resultsHtml = resultsHtml.concat(`<div class="search-vendor">${result.vendor}</div>`);
             }
 
-            resultsHtml = resultsHtml.concat(` <h5><a href="${result.url}">${result.title}</a></h5>`);
+            resultsHtml = resultsHtml.concat(` <h5><a href="${result.url}">${result.title ? result.title : result.styled_text}</a></h5>`);
 
             if (!result.available && group.name == 'Products') {
               resultsHtml = resultsHtml.concat(`<div>${soldOut}</div>`);
@@ -24889,16 +24924,12 @@ class PredictiveSearch {
     this.lastFocus = document.activeElement;
     this.searchResultsNum = 0;
     this.searchHasResults = false;
-    this.searchTypes = false;
-    this.searchTypesNum = 0;
     this.isSearchPredictive = false;
     this.showPrices = false;
     this.showVendor = false;
     this.initialLoad = true;
 
     if (this.searchInput) {
-      this.searchTypes = this.searchInput.dataset.searchTypes.replace(/,$/, '');
-      this.searchTypesNum = this.searchTypes.split(',').length;
       this.isSearchPredictive = this.searchInput.classList.contains('is-predictive');
       this.showPrices = this.searchInput.dataset.showPrices == 'true';
       this.showVendor = this.searchInput.dataset.showVendor == 'true';
@@ -25454,7 +25485,7 @@ class Header extends Section {
       }
 
       let headerHeight = 0;
-      const header = document.getElementById('shopify-section-header');
+      const header = document.querySelector('[data-wetheme-section-type="header"]');
 
       if (header) {
         headerHeight = parseFloat(getComputedStyle(header, null).height.replace('px', ''));
@@ -26411,6 +26442,15 @@ class QuantityControls {
   constructor(theme, element, updateCart) {
     var _this = this;
 
+    this.duplicateCartItemHandler = (id, stockCount, currentVal) => {
+      let duplicateQuantity = 0;
+      document.querySelectorAll(`[data-item-id="${id}"]`).forEach(item => {
+        duplicateQuantity += parseInt(item.querySelector('input.quantity-selector').value.toString(), 10);
+      });
+      stockCount = stockCount - duplicateQuantity + currentVal;
+      return stockCount;
+    };
+
     this.updatePrices = response => {
       // Note: We don't currently construct the Cart page's rows dynamically
       //       (like we do in Cart drawer).
@@ -26499,8 +26539,14 @@ class QuantityControls {
         let stockAmt = this.closest('.quantity-controls').dataset.stockCount;
         let inventoryPolicy = this.closest('.quantity-controls').dataset.inventoryPolicy;
         let inventoryManagement = this.closest('.quantity-controls').dataset.inventoryManagement;
+        let itemId = this.closest('.quantity-controls').dataset.itemId;
+        let itemHasDuplicate = itemId ? document.querySelectorAll(`[data-item-id="${itemId}"]`).length > 1 : false;
         let errorMsg = this.parentElement.nextElementSibling;
-        const val = parseInt(qtyInput.value.toString(), 10);
+        let val = parseInt(qtyInput.value.toString(), 10);
+
+        if (itemHasDuplicate) {
+          stockAmt = _self.duplicateCartItemHandler(itemId, stockAmt, val);
+        }
 
         if (stockAmt && stockAmt > 0) {
           if (val < stockAmt || inventoryPolicy == "continue" || inventoryManagement != "shopify") {
@@ -26549,9 +26595,15 @@ class QuantityControls {
         let stockAmt = this.closest('.quantity-controls').dataset.stockCount;
         let inventoryPolicy = this.closest('.quantity-controls').dataset.inventoryPolicy;
         let inventoryManagement = this.closest('.quantity-controls').dataset.inventoryManagement;
+        let itemId = this.closest('.quantity-controls').dataset.itemId;
+        let itemHasDuplicate = itemId ? document.querySelectorAll(`[data-item-id="${itemId}"]`).length > 1 : false;
         let errorMsg = this.parentElement.nextElementSibling;
-        var val = parseInt(e.currentTarget.value.toString(), 10);
+        let val = parseInt(e.currentTarget.value.toString(), 10);
         var qtyInput = this.closest('.quantity-controls').querySelector('input.quantity-selector');
+
+        if (itemHasDuplicate) {
+          stockAmt = _self.duplicateCartItemHandler(itemId, stockAmt, val);
+        }
 
         if (stockAmt && stockAmt > 0) {
           if (val > stockAmt && (inventoryPolicy !== "continue" || inventoryManagement == "shopify")) {
@@ -27267,6 +27319,8 @@ class Product extends Section {
     };
 
     this.updatedCart = data => {
+      // Dispatch event so other components can update
+      document.dispatchEvent(new CustomEvent('cart:added'));
       this.theme.updateCartDrawer(data);
       this.enableCartButton();
       const cart_action = document.getElementById('PageContainer').dataset.cartAction;
@@ -27303,7 +27357,11 @@ class Product extends Section {
       if (response.status == 0) {
         errorText = 'Unable to connect to server';
       } else if (response.status == 422) {
-        errorText = response.description;
+        if (response.errors) {
+          errorText = response.message;
+        } else {
+          errorText = response.description;
+        }
       } else if (response.responseJSON) {
         // Process JSON error
         if (response.responseJSON.description) {
@@ -29636,6 +29694,8 @@ class Theme extends ThemeBase {
     this.loadGlobal();
     this.breakpoint = this.getBreakpoint();
     this.wow = new (wow_default())().init();
+    document.body.addEventListener('mousedown', this.usingMouse);
+    document.body.addEventListener('keydown', this.usingTab);
     this.loadDrawers();
     this.popup = null;
     const popupEl = document.querySelector('#popup');
@@ -29674,6 +29734,18 @@ class Theme extends ThemeBase {
     this.makeVideoEmbedsResponsive();
   }
 
+  usingMouse() {
+    document.body.classList.add('using-mouse');
+    document.body.classList.remove('using-keyboard');
+  }
+
+  usingTab(evt) {
+    if (evt.key === "Tab") {
+      document.body.classList.remove('using-mouse');
+      document.body.classList.add('using-keyboard');
+    }
+  }
+
 } // Make the theme object instance globally available
 
 
@@ -29687,10 +29759,3 @@ window.onYouTubePlayerAPIReady = () => {
 /******/ })()
 ;
 //# sourceMappingURL=theme.js.map
-var links = document.links;
-for (let i = 0, linksLength = links.length ; i < linksLength ; i++) {
-  if (links[i].hostname !== window.location.hostname) {
-    links[i].target = '_blank';
-    links[i].rel = 'noreferrer noopener';
-  }
-}

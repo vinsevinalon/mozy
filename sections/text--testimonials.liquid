@@ -65,7 +65,12 @@
                           {% if block.settings.testimonial != blank %}
 
                             {% if block.settings.testimonialImage != blank %}
-                              <img src="{{ block.settings.testimonialImage | img_url: '200x200', crop: 'center' }}" alt="{{ block.settings.author | escape }}" class="testimonial-indiv--circle">
+                              <img
+                                src="{{ block.settings.testimonialImage | img_url: '300x' }}"
+                                alt="{{ block.settings.author | escape }}"
+                                class="testimonial-indiv--circle"
+                                style="object-fit:cover;object-position:{{ block.settings.testimonialImage.presentation.focal_point }};"
+                              >
                             {% endif %}
 
                             {% if block.settings.stars != blank and block.settings.stars != "0" %}
@@ -312,6 +317,9 @@
                 }
             ]
         }
-    ]
+    ],
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    }
 }
 {% endschema %}

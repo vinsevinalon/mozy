@@ -35,10 +35,8 @@
                             {% endif %}
 
                             {% if block.settings.image != blank %}
-                                {% capture props %}
-                                    style="max-width: {{ block.settings.image.width }}px"
-                                {% endcapture %}
-                                {% render 'responsive-image' with block.settings.image, alt: block.settings.image.alt, class: 'logo-bar__image', props: props, default_size: '240x' %}
+                                {% capture image_styles %}max-width: {{ block.settings.image.width }}px;{% endcapture %}
+                                {% render 'responsive-image' with block.settings.image, alt: block.settings.image.alt, class: 'logo-bar__image', styles: image_styles, default_size: '240x' %}
                             {% else %}
                                 {{ 'logo' | placeholder_svg_tag: 'icon--placeholder' }}
                             {% endif %}
@@ -199,6 +197,9 @@
                 }
             ]
         }
-    ]
+    ],
+    "disabled_on": {
+        "groups": ["header"]
+    }
 }
 {% endschema %}

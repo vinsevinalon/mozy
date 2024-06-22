@@ -4,7 +4,7 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
 {% endcomment %}
 <!DOCTYPE html>
 <html class="no-js" lang="{{ request.locale.iso_code }}">
-<head>{% render 'pagefly-head' %}
+<head>
 
 	<meta charset="utf-8">
 	{%- comment -%}DemoStoreRequirements{%- endcomment -%}
@@ -29,7 +29,7 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
 
 	{% render 'social-meta-tags' %}
 
-	<link rel="canonical" href="{{ https://getthemozy.com/ }}" />
+	<link rel="canonical" href="{{ canonical_url }}" />
 
 	<!-- CSS -->
 	{% render 'css-variables' %}
@@ -68,9 +68,6 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
 	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
 	{{ content_for_header }}
- {%- render 'bold-pr' -%}
-{%- render 'bold-common' -%}
-{%- render 'bold-includes' -%}
 
 	<script type="text/javascript">
 	window.lazySizesConfig = window.lazySizesConfig || {};
@@ -92,9 +89,7 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
 	{% if template.name == 'article' %}
 		<script src="{{ 'textSlideshow.js' | asset_url }}" defer="defer"></script>
 	{% endif %}
-
-  {% render 'shogun-head' %}
-</head>
+{% include 'pagefly-app-header' %}</head>
 
 {% assign cart_visible = true %}
 {% if settings.cart-type == 'persistent' and settings.persistent-cart-visibility == 'product_collection' %}
@@ -110,6 +105,8 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
 	{% if settings.cart-type == 'persistent' %}
 	data-cart-visible="{{ cart_visible }}"
 	{% endif %}
-><div class="pagefly-container">{{ content_for_layout }}</div></body>
+><div class="pagefly-container">
+              {{ content_for_layout }}
+            </div></body>
 
 </html>

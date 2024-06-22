@@ -23,9 +23,10 @@
 
             {% if block.settings.link_image != blank %}
               <img 
-                src="{{ block.settings.link_image | img_url: '100x100', crop: 'center' }}" 
+                src="{{ block.settings.link_image | img_url: '300x' }}" 
                 class="visual-navigation__image"
                 alt="{{ block.settings.link_image.alt | default: block.settings.link_text }}"
+                style="object-fit:cover;object-position:{{ block.settings.link_image.presentation.focal_point }};"
               >
             {% else %}
               {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
@@ -133,9 +134,8 @@
       ]
     }
   ],
-  "templates": [
-    "collection",
-    "blog"
-  ]
+  "enabled_on": {
+    "templates": ["collection", "blog"]
+  }
 }
 {% endschema %}

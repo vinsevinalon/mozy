@@ -1,19 +1,8 @@
 {
   "wrapper": "div",
   "sections": {
-    "shogun-helper": {
-      "type": "shogun-helper",
-      "settings": {
-      }
-    },
-    "shogun-above": {
-      "type": "shogun-above",
-      "settings": {
-      }
-    },
     "main": {
       "type": "template--product",
-      "disabled": true,
       "blocks": {
         "product-price": {
           "type": "product-price",
@@ -62,6 +51,7 @@
         "shop-pay",
         "social-sharing"
       ],
+      "disabled": true,
       "settings": {
         "show_out_of_stock_email": true,
         "out_of_stock_email_position": "below-details",
@@ -79,18 +69,10 @@
         "show_product_recommendations": false,
         "product_recommendations_heading": "You may also like"
       }
-    },
-    "shogun-below": {
-      "type": "shogun-below",
-      "settings": {
-      }
     }
   },
   "order": [
-    "shogun-helper",
-    "shogun-above",
     "main",
-    "product-recommendations",
-    "shogun-below"
+    "product-recommendations"
   ]
 }

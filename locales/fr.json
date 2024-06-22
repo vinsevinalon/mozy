@@ -57,6 +57,7 @@
       "title": "Effectuez une recherche",
       "products": "Des produits",
       "articles": "Des articles",
+      "suggestions": "Suggestions",
       "pages": "Pages",
       "collections": "Les collections",
       "results": "Résultats",
@@ -390,6 +391,16 @@
       "redeem": "Utilisez ce code à la caisse pour réclamer votre carte-cadeau",
       "shop_link": "Commencez à magasiner",
       "print": "Imprimer"
+    },
+    "recipient": {
+      "form": {
+        "checkbox": "Je veux l'envoyer en cadeau",
+        "recipient_email": "Courriel du destinataire",
+        "recipient_name": "Nom du destinataire (optionnel)",
+        "max_characters": "{{ max_chars }} caractères maximum",
+        "message_placeholder": "Message (optionnel)",
+        "email_label_optional_for_no_js_behavior": "E-mail du destinataire (facultatif)"
+      }
     }
   },
   "coming_soon": {

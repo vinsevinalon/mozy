@@ -6,8 +6,9 @@
       {% if block.settings.image != blank %}
         <div class="product-testimonial__img{% if section.settings.image_style == 'circle' %} product-testimonial__img--circle{% endif %}">
           <img 
-            src="{{ block.settings.image | img_url: '200x200', crop: 'center' }}" 
+            src="{{ block.settings.image | img_url: '300x' }}" 
             alt="{{ block.settings.image.alt | default: block.settings.author }}"
+            style="object-fit:cover;object-position:{{ block.settings.image.presentation.focal_point }};"
           >
         </div>
       {% endif %}
@@ -126,8 +127,8 @@
       ]
     }
   ],
-  "templates": [
-    "product"
-  ]
+  "enabled_on": {
+    "templates": ["product"]
+  }
 }
 {% endschema %}

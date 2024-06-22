@@ -1,10 +1,3 @@
-{%- capture search_types -%}
-  {%- if settings.enable-product-results -%}product,{%- endif -%}
-  {%- if settings.enable-page-results -%}page,{%- endif -%}
-  {%- if settings.enable-article-results -%}article,{%- endif -%}
-  {%- if settings.enable-collection-results -%}collection{%- endif -%}
-{%- endcapture -%}
-
 {% capture search_placeholder %}
   {% if section.settings.search-message != blank %}
     "{{ section.settings.search-message }}"
@@ -25,7 +18,6 @@
   <div class="top-search-wrapper--expanded">
     <div class="top-search">
       <form id="search-page-form-header" action="{{ routes.search_url }}">
-        <input type="hidden" name="type" value="{{ search_types }}" />
         <div id="search-wrapper">
 
           <label for="search_text" class="sr-only" id="search_label">{{ 'general.search.title' | t }} {{ shop.name}}</label>
@@ -40,7 +32,6 @@
             autocorrect="off"
             spellcheck="false"
             class="{% if settings.predictive_search_enabled %}is-predictive{% else %}not-predictive{% endif %}"
-            data-search-types="{{ search_types }}"
             data-show-prices="{{ settings.predictive_search_show_price }}"
             data-show-vendor="{{ settings.predictive_search_show_vendor }}"
             aria-hidden="true"

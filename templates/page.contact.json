@@ -27,7 +27,6 @@
       "settings": {
         "image": "shopify:\/\/shop_images\/Checkout_More_Press_Click_the_links_to_see_reviews_of_the_Mozy_1779ce97-72ce-4e1f-99a6-23bcb93d3e57.png",
         "parallax": false,
-        "alignment": "center",
         "hero_size": "small",
         "text-over-image-width": "full-width"
       }

@@ -1,12 +1,5 @@
 {{ 'section-search-block.min.css' | asset_url | stylesheet_tag }}
 
-{%- capture search_types -%}
-  {%- if settings.enable-product-results -%}product,{%- endif -%}
-  {%- if settings.enable-page-results -%}page,{%- endif -%}
-  {%- if settings.enable-article-results -%}article,{%- endif -%}
-  {%- if settings.enable-collection-results -%}collection{%- endif -%}
-{%- endcapture -%}
-
 <section class="homepage-sections-wrapper search-block search-block--{{ section.id }}{% if section.settings.background_image %} has-bg{% endif %}{% if section.settings.enable_overlay %} has-overlay{% endif %}">
 
   <div
@@ -31,7 +24,6 @@
 
     <div class="section-search-block"{% if settings.predictive_search_enabled %} data-predictive-search{% endif %}>
       <form id="search-page-form" action="{{ routes.search_url }}">
-        <input type="hidden" name="type" value="{{ search_types }}" />
         <div id="block-search-wrapper">
           <label for="search_text_search_block" class="sr-only" id="search_block_label">{{ 'general.search.title' | t }} {{ shop.name}}</label>
 
@@ -45,7 +37,6 @@
             autocorrect="off"
             spellcheck="false"
             class="{% if settings.predictive_search_enabled %}is-predictive{% else %}not-predictive{% endif %}"
-            data-search-types="{{ search_types }}"
             data-show-prices="{{ settings.predictive_search_show_price }}"
             data-show-vendor="{{ settings.predictive_search_show_vendor }}"
           />
@@ -248,16 +239,18 @@
             }
         }
     ],
-    "templates": [
-      "404",
-      "article",
-      "blog",
-      "cart",
-      "collection",
-      "list-collections",
-      "index",
-      "page",
-      "product"
-    ]
+    "enabled_on": {
+      "templates": [
+        "404",
+        "article",
+        "blog",
+        "cart",
+        "collection",
+        "list-collections",
+        "index",
+        "page",
+        "product"
+      ]
+    }
 }
 {% endschema %}

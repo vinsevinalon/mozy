@@ -1,0 +1,77 @@
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "custom_css": [
+
+      ],
+      "settings": {
+        "enable": true,
+        "message_text": "🏕️ 30% OFF Store-Wide Summer Camping Special!  👉SUMMER30👈",
+        "message_link": "",
+        "notification-bar--background-color": "#54c7de",
+        "notification-bar--text-color": "#ffffff",
+        "social-enable": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "f43f65f2-4578-4e32-a52b-db5a8ecf17f8": {
+          "type": "content",
+          "disabled": true,
+          "settings": {
+            "mega-menu": "",
+            "mega_image_header_1": "",
+            "mega_image_subheader_1": "",
+            "mega_image_link_1": "",
+            "mega_image_header_2": "",
+            "mega_image_subheader_2": "",
+            "mega_image_link_2": ""
+          }
+        },
+        "a799dcf4-8f6d-4a36-ac0f-d1c16a536aa1": {
+          "type": "content",
+          "disabled": true,
+          "settings": {
+            "mega-menu": "",
+            "mega_image_header_1": "",
+            "mega_image_subheader_1": "",
+            "mega_image_link_1": "",
+            "mega_image_header_2": "",
+            "mega_image_subheader_2": "",
+            "mega_image_link_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "f43f65f2-4578-4e32-a52b-db5a8ecf17f8",
+        "a799dcf4-8f6d-4a36-ac0f-d1c16a536aa1"
+      ],
+      "settings": {
+        "sticky_header": "enable",
+        "overlay_header": false,
+        "show_border": false,
+        "logo": "shopify:\/\/shop_images\/Mozy-Logo_300x_15f613a5-a571-47a8-ac88-85ffc55a4f44.png",
+        "logo_max_width": 130,
+        "logo-placement": "left",
+        "sticky_header_logo": true,
+        "search-expand": false,
+        "search-message": "Search...",
+        "icon-enable": true,
+        "cart-number": "quantity",
+        "show_currency_selector": false,
+        "show_locale_selector": false,
+        "main_linklist": "main-bar",
+        "top_bar_linklist": "",
+        "show-sticky-top-bar": true
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

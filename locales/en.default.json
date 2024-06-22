@@ -57,6 +57,7 @@
       "title": "Search our site",
       "products": "Products",
       "articles": "Articles",
+      "suggestions": "Suggestions",
       "pages": "Pages",
       "collections": "Collections",
       "results": "Results",
@@ -142,19 +143,19 @@
       "open_cart": "Open cart sidebar",
       "close_cart": "Open cart sidebar",
       "remove": "Remove",
-      "note": "Include a Free Gift Message",
+      "note": "Add a note for the seller",
       "subtotal": "Subtotal",
-      "taxes_and_shipping_at_checkout": "Enter promotional codes & calculate taxes and shipping at checkout",
-      "taxes_and_shipping_policy_at_checkout_html": "Enter promotional codes & calculate taxes and <a href=\"{{ link }}\">shipping<\/a> at checkout",
-      "taxes_included_but_shipping_at_checkout": "",
-      "taxes_included_and_shipping_policy_html": "",
+      "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping<\/a> calculated at checkout",
+      "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",
+      "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping<\/a> calculated at checkout.",
       "total": "Total",
       "price": "Price",
       "quantity": "Quantity",
       "update": "Update Cart",
       "added_to": "Added to",
       "removed_from": "Removed from",
-      "checkout": "Proceed to Checkout",
+      "checkout": "Place your order",
       "checkout_mobile": "Checkout",
       "empty": "Your basket is empty",
       "alt_checkout": "Or checkout out using",
@@ -420,6 +421,16 @@
       "redeem": "Use this code at checkout to redeem your gift card",
       "shop_link": "Start shopping",
       "print": "Print"
+    },
+    "recipient": {
+      "form": {
+        "checkbox": "I want to send this as a gift",
+        "recipient_email": "Recipient's email",
+        "recipient_name": "Recipient's name (optional)",
+        "max_characters": "{{ max_chars }} characters max",
+        "message_placeholder": "Message (optional)",
+        "email_label_optional_for_no_js_behavior": "Recipient email (optional)"
+      }
     }
   },
   "coming_soon": {

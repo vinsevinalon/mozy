@@ -7,7 +7,7 @@
     {% render 'responsive-background-image--no-formatting' with section.settings.image, selector: selector, scale: scale %}
 
     .hero--{{ section.id }} .img {
-      background-position: {{ section.settings.alignment }};
+      background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       width: 100%;
@@ -171,50 +171,6 @@
         },
         {
             "type": "select",
-            "id": "alignment",
-            "label": {
-                "en": "Image alignment",
-                "de": "Bildausrichtung",
-                "es": "Alineación de la imagen",
-                "fr": "Alignement de l'image",
-                "pt-PT": "Alinhamento da imagem"
-            },
-            "default": "center",
-            "options": [
-                {
-                    "value": "top",
-                    "label": {
-                        "en": "Top",
-                        "de": "Oben",
-                        "es": "Arriba",
-                        "fr": "En haut",
-                        "pt-PT": "Parte superior"
-                    }
-                },
-                {
-                    "value": "center",
-                    "label": {
-                        "en": "Middle",
-                        "de": "Mitte",
-                        "es": "Medio",
-                        "fr": "Au milieu",
-                        "pt-PT": "Centro"
-                    }
-                },
-                {
-                    "value": "bottom",
-                    "label": {
-                        "en": "Bottom",
-                        "de": "Unten",
-                        "es": "Abajo",
-                        "fr": "En bas",
-                        "pt-PT": "Parte inferior"
-                    }
-                }
-            ]
-        },
-        {
-            "type": "select",
             "id": "hero_size",
             "label": {
                 "en": "Section height",
@@ -358,6 +314,9 @@
                 "pt-PT": "Imagem"
             }
         }
-    ]
+    ],
+    "disabled_on": {
+        "groups": ["header", "footer"]
+    }
 }
 {% endschema %}

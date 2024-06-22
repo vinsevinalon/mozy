@@ -57,6 +57,7 @@
       "title": "Suchen Sie auf unserer Seite",
       "products": "Produkte",
       "articles": "Artikel",
+      "suggestions": "Vorschläge",
       "pages": "Seiten",
       "collections": "Sammlungen",
       "results": "Ergebnisse",
@@ -390,6 +391,16 @@
       "redeem": "Verwenden Sie diesen Code an der Kasse",
       "shop_link": "Fangen Sie an",
       "print": "Drucken"
+    },
+    "recipient": {
+      "form": {
+        "checkbox": "Ich möchte das als Geschenk verschicken",
+        "recipient_email": "E-Mail des Empfängers",
+        "recipient_name": "Name des Empfängers (optioneel)",
+        "max_characters": "{{ max_chars }} karakters max",
+        "message_placeholder": "Bericht (optioneel)",
+        "email_label_optional_for_no_js_behavior": "Empfänger-E-Mail (optional)"
+      }
     }
   },
   "coming_soon": {

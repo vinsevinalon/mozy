@@ -70,15 +70,8 @@
     "popup--show-newsletter": true,
     "favicon": "shopify:\/\/shop_images\/mozylogo_a8be1cf1-d822-448e-a3e8-5bb5dce3e880.png",
     "predictive_search_enabled": false,
-    "enable-product-results": false,
-    "enable-page-results": false,
-    "enable-article-results": false,
-    "enable-collection-results": false,
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
-    "checkout_logo_image": "shopify:\/\/shop_images\/Copy_of_Mozy_No_Tag_Line_1.png",
-    "checkout_heading_font": "Lato",
-    "checkout_body_font": "Lato",
     "show_vendor": false,
     "quantity_enable": true,
     "show_reviews": true,
@@ -96,7 +89,7 @@
         ],
         "settings": {
           "enable": true,
-          "message_text": "💫 $100+ Ships FREE | Plus FREE Mozy SoftShell Youth With Any Purchase",
+          "message_text": "🏕️ 30% OFF Store-Wide Summer Camping Special!  👉SUMMER30👈",
           "message_link": "",
           "notification-bar--background-color": "#54c7de",
           "notification-bar--text-color": "#ffffff",
@@ -155,53 +148,6 @@
           "top_bar_linklist": "",
           "show-sticky-top-bar": true
         }
-      },
-      "footer": {
-        "type": "footer",
-        "blocks": {
-          "footer-0": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Mozy_Logo_No_Tagline_777ab883-b20d-427a-9512-00c1f40de36d.png",
-              "image_max_width": 65,
-              "image_opacity": 100
-            }
-          },
-          "footer-1": {
-            "type": "social",
-            "settings": {
-              "menu_title": "Get connected"
-            }
-          },
-          "footer-3": {
-            "type": "menu",
-            "settings": {
-              "menu_title": "Links",
-              "footer_linklist": "footer-1"
-            }
-          },
-          "3fd2968b-6d94-41f6-92d9-18e224749285": {
-            "type": "menu",
-            "settings": {
-              "menu_title": "Links",
-              "footer_linklist": "footer-2"
-            }
-          }
-        },
-        "block_order": [
-          "footer-0",
-          "footer-1",
-          "footer-3",
-          "3fd2968b-6d94-41f6-92d9-18e224749285"
-        ],
-        "settings": {
-          "show_back_to_top": true,
-          "back_to_top_text": "Back to top",
-          "show_borders": true,
-          "show_methods_of_payment": true,
-          "show_currency_selector": false,
-          "show_locale_selector": false
-        }
       }
     },
     "content_for_index": [
@@ -226,12 +172,6 @@
         "settings": {
         }
       },
-      "7421546185640437913": {
-        "type": "shopify:\/\/apps\/tixel-multi-pixels\/blocks\/app-embed\/b273c4b8-95ba-409d-a87c-c46907e02629",
-        "disabled": false,
-        "settings": {
-        }
-      },
       "5674012996228588682": {
         "type": "shopify:\/\/apps\/cartbot\/blocks\/cartbot-script-append\/f7a44e3b-3901-4412-9d5a-3db0980a9db0",
         "disabled": false,
@@ -243,6 +183,12 @@
         "disabled": true,
         "settings": {
           "position": "right"
+        }
+      },
+      "16278478101612877664": {
+        "type": "shopify:\/\/apps\/pagefly-page-builder\/blocks\/app-embed\/83e179f7-59a0-4589-8c66-c0dddf959200",
+        "disabled": false,
+        "settings": {
         }
       }
     }
@@ -305,9 +251,6 @@
       "popup-delay": 12,
       "popup--show-social-icons": true,
       "popup--show-newsletter": true,
-      "enable-page-results": true,
-      "enable-article-results": true,
-      "enable-collection-results": true,
       "predictive_search_show_vendor": false,
       "predictive_search_show_price": true,
       "show_vendor": false,
@@ -344,48 +287,6 @@
             "main_linklist": "main-menu",
             "top_bar_linklist": "main-menu",
             "show-sticky-top-bar": true
-          }
-        },
-        "footer": {
-          "type": "footer",
-          "blocks": {
-            "footer-0": {
-              "type": "image",
-              "settings": {
-                "image_max_width": 65,
-                "image_opacity": 100
-              }
-            },
-            "footer-1": {
-              "type": "social",
-              "settings": {
-              }
-            },
-            "footer-2": {
-              "type": "text",
-              "settings": {
-              }
-            },
-            "footer-3": {
-              "type": "menu",
-              "settings": {
-                "footer_linklist": "footer-menu"
-              }
-            }
-          },
-          "block_order": [
-            "footer-0",
-            "footer-1",
-            "footer-2",
-            "footer-3"
-          ],
-          "settings": {
-            "show_back_to_top": true,
-            "back_to_top_text": "Back to top",
-            "show_borders": false,
-            "show_methods_of_payment": true,
-            "show_currency_selector": true,
-            "show_locale_selector": true
           }
         }
       },
@@ -427,9 +328,6 @@
       "popup--enable": false,
       "pop-up-text-description-text": "<p>Give your customers a reason to sign up to your newsletter<\/p>",
       "popup--show-social-icons": true,
-      "enable-page-results": true,
-      "enable-article-results": true,
-      "enable-collection-results": true,
       "predictive_search_show_vendor": true,
       "predictive_search_show_price": true,
       "menu-case": "menu-upper-case",
@@ -484,51 +382,6 @@
             "main_linklist": "main-menu",
             "top_bar_linklist": "",
             "show-sticky-top-bar": true
-          }
-        },
-        "footer": {
-          "type": "footer",
-          "blocks": {
-            "f37f393e-424f-4292-967f-bd5c5df6549a": {
-              "type": "image",
-              "settings": {
-                "image_max_width": 80,
-                "image_opacity": 100
-              }
-            },
-            "footer-3": {
-              "type": "social",
-              "settings": {
-                "menu_title": "Get connected"
-              }
-            },
-            "footer-0": {
-              "type": "text",
-              "settings": {
-                "title": "Contact us",
-                "richtext": "<p>Share store details, promotions, or brand content with your customers.<\/p>"
-              }
-            },
-            "footer-1": {
-              "type": "menu",
-              "settings": {
-                "menu_title": "Links",
-                "footer_linklist": "footer"
-              }
-            }
-          },
-          "block_order": [
-            "f37f393e-424f-4292-967f-bd5c5df6549a",
-            "footer-3",
-            "footer-0",
-            "footer-1"
-          ],
-          "settings": {
-            "show_back_to_top": true,
-            "back_to_top_text": "",
-            "show_borders": true,
-            "show_methods_of_payment": true,
-            "show_currency_selector": true
           }
         },
         "video--video-with-text-overlay": {
@@ -1134,40 +987,6 @@
           ],
           "settings": {
             "subheading": "Subheading"
-          }
-        },
-        "footer": {
-          "type": "footer",
-          "blocks": {
-            "footer-0": {
-              "type": "image",
-              "settings": {
-              }
-            },
-            "footer-1": {
-              "type": "newsletter",
-              "settings": {
-              }
-            },
-            "footer-2": {
-              "type": "menu",
-              "settings": {
-              }
-            },
-            "footer-3": {
-              "type": "social",
-              "settings": {
-              }
-            }
-          },
-          "block_order": [
-            "footer-0",
-            "footer-1",
-            "footer-2",
-            "footer-3"
-          ],
-          "settings": {
-            "back_to_top_text": ""
           }
         },
         "template--product": {

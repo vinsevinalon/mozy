@@ -124,12 +124,12 @@ Parameters:
                         {% when 'image' %}
                             <div class="product-single__media__image">
                                 {% capture props %}
-                                    style="max-width: {{ media.width }}px"
                                     data-image-id="{{ media.id }}"
                                     data-zoom-img="{{ media | img_url: 'master' }}"
                                 {% endcapture %}
 
-                                {% render 'responsive-image' with media, class: 'product-single__photo', alt: media.alt, default_size: '300x', props: props, blur: false %}
+                                {% capture image_styles %}max-width: {{ media.width }}px;{% endcapture %}
+                                {% render 'responsive-image' with media, class: 'product-single__photo', alt: media.alt, default_size: '300x', props: props, styles: image_styles, blur: false %}
 
                                 <div class="zoomed-image hide"></div>
                             </div>
@@ -171,7 +171,6 @@ Parameters:
             <div class="product-single__thumbnail__wrapper" style="padding-top: {{ 1 | divided_by: media.preview_image.aspect_ratio | times: 100}}%">
             {% capture props %}
                 data-image-id="{{ media.id }}"
-                style="max-width: {{ media_width }}px"
                 data-max-width="{{ media_width }}"
             {% endcapture %}
             {% capture class %}product-single__type-{{ media.media_type }} product-single__thumbnail__image{% endcapture %}
@@ -184,7 +183,8 @@ Parameters:
                     {{ 'products.product.gallery_thumbnail_alt' | t: imageAlt: media.alt | escape }}
                 {% endif %}
             {% endcapture %} {% endcomment %}
-            {% render 'responsive-image' with media, class: class, alt: thumbalt, default_size: '300x', props: props, blur: false %}
+            {% capture image_styles %}max-width: {{ media_width }}px;{% endcapture %}
+            {% render 'responsive-image' with media, class: class, alt: thumbalt, default_size: '300x', props: props, styles: image_styles, blur: false %}
 
             {% if media_icon %}
                 <button type="button" class="product-single__media__icon">

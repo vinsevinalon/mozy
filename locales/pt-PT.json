@@ -57,6 +57,7 @@
       "title": "Pesquisar nosso site",
       "products": "Produtos",
       "articles": "Artigos",
+      "suggestions": "Sugestões",
       "pages": "Páginas",
       "collections": "Coleções",
       "results": "Resultados",
@@ -390,6 +391,16 @@
       "redeem": "Use este código no pagamento para usar o seu cartão oferta",
       "shop_link": "Começar as compras",
       "print": "Imprimir"
+    },
+    "recipient": {
+      "form": {
+        "checkbox": "Eu quero enviar isso como um presente",
+        "recipient_email": "Email do destinatário",
+        "recipient_name": "Nome do destinatário (opcional)",
+        "max_characters": "{{ max_chars }} máximo de caracteres",
+        "message_placeholder": "Mensagem (opcional)",
+        "email_label_optional_for_no_js_behavior": "E-mail do destinatário (opcional)"
+      }
     }
   },
   "coming_soon": {

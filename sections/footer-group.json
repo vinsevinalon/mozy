@@ -1,0 +1,57 @@
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer-main": {
+      "type": "footer-main",
+      "blocks": {
+        "footer-0": {
+          "type": "image",
+          "settings": {
+            "image_max_width": 65,
+            "image_opacity": 100
+          }
+        },
+        "footer-1": {
+          "type": "social",
+          "settings": {
+          }
+        },
+        "footer-2": {
+          "type": "text",
+          "settings": {
+          }
+        },
+        "footer-3": {
+          "type": "menu",
+          "settings": {
+            "footer_linklist": "footer-menu"
+          }
+        }
+      },
+      "block_order": [
+        "footer-0",
+        "footer-1",
+        "footer-2",
+        "footer-3"
+      ],
+      "settings": {
+        "show_back_to_top": true,
+        "back_to_top_text": "Back to top",
+        "show_borders": false
+      }
+    },
+    "footer-bottom": {
+      "type": "footer-bottom",
+      "settings": {
+        "show_methods_of_payment": true,
+        "show_currency_selector": true,
+        "show_locale_selector": true
+      }
+    }
+  },
+  "order": [
+    "footer-main",
+    "footer-bottom"
+  ]
+}

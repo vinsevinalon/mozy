@@ -1,12 +1,12 @@
 {
   "sections": {
-    "pf-1ab1f2fd": {
-      "type": "pf-1ab1f2fd",
+    "main": {
+      "type": "template--page",
       "settings": {
       }
     }
   },
   "order": [
-    "pf-1ab1f2fd"
+    "main"
   ]
 }

@@ -1,10 +1,5 @@
 {
   "sections": {
-    "shogun-helper": {
-      "type": "shogun-helper",
-      "settings": {
-      }
-    },
     "main": {
       "type": "template--article",
       "settings": {
@@ -17,7 +12,6 @@
     }
   },
   "order": [
-    "shogun-helper",
     "main"
   ]
 }
